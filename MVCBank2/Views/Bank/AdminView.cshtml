@@ -1,0 +1,55 @@
+﻿@model IEnumerable<MVCBank2.Models.Newaccount>
+
+@{
+    ViewData["Title"] = "AdminView";
+}
+
+<h1>AdminView</h1>
+
+<p>
+    <a asp-action="AddCustomer">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+             <th>
+                @Html.DisplayNameFor(model => model.AccountNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrentBalance)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+              <td>
+                @Html.DisplayFor(modelItem => item.AccountNumber)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentBalance)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-AccountNumber="@item.AccountNumber">Edit</a> |
+                <a asp-action="Details" asp-route-AccountNumber="@item.AccountNumber">Details</a> |
+                <a asp-action="Delete" asp-route-AccountNumber="@item.AccountNumber">Delete</a>|
+                   <a asp-action="TransactionHistory" asp-route-AccountNumber="@item.AccountNumber">Transaction History</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
